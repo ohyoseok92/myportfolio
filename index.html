@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오효석 | 포트폴리오</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent2: #22c55e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      background: linear-gradient(180deg, #020617, #0f172a 40%);
+      color: var(--text);
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(2,6,23,.6);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav a { color: var(--text); text-decoration: none; margin-left: 16px; opacity: .9; }
+    .nav a:hover { opacity: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 80px; }
+    .hero {
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center;
+      padding: 40px 0 20px;
+    }
+    .badge { display: inline-flex; gap: 8px; align-items: center; background: rgba(56,189,248,.15); color: var(--accent); padding: 6px 10px; border-radius: 999px; font-size: 12px; }
+    h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin: 14px 0; }
+    p.lead { color: var(--muted); font-size: clamp(14px, 2.2vw, 18px); }
+    .cta { display: flex; gap: 12px; margin-top: 18px; }
+    .btn { padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(148,163,184,.25); background: linear-gradient(180deg, rgba(17,24,39,.8), rgba(17,24,39,.6)); color: var(--text); cursor: pointer; }
+    .btn.primary { background: linear-gradient(180deg, #38bdf8, #0ea5e9); color: #020617; border: none; }
+    .card {
+      background: radial-gradient(120% 120% at 10% 0%, rgba(56,189,248,.08), transparent 40%), var(--card);
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: 20px; padding: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+    .stat { padding: 14px; border-radius: 14px; background: rgba(2,6,23,.6); border: 1px solid rgba(148,163,184,.15); text-align: center; }
+    .stat strong { font-size: 22px; }
+    section { margin-top: 60px; }
+    section h2 { font-size: 26px; margin-bottom: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .chip { display: inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(148,163,184,.12); margin: 4px 6px 0 0; font-size: 12px; }
+    .timeline { display: grid; gap: 12px; }
+    .item { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
+    .item time { color: var(--muted); }
+    .project { position: relative; overflow: hidden; }
+    .project:hover .overlay { opacity: 1; transform: translateY(0); }
+    .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent, rgba(2,6,23,.9)); opacity: 0; transform: translateY(10px); transition: .25s; padding: 14px; display: flex; align-items: flex-end; }
+    footer { text-align: center; color: var(--muted); padding-top: 40px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .item { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .nav a { margin-left: 10px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <strong>HYOSEOK</strong>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">Information Engineering Student</span>
+        <h1>데이터와 기술로<br/>현실 문제를 해결하는 개발자</h1>
+        <p class="lead">한양대학교에서 정보공학을 전공 중이며, AI·데이터 분석과 시스템 구현을 통해 비즈니스와 사회 문제를 연결하는 개발자를 목표로 합니다.</p>
+        <div class="cta">
+          <button class="btn primary" onclick="scrollToId('projects')">프로젝트 보기</button>
+          <button class="btn" onclick="scrollToId('contact')">연락하기</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Quick Facts</h3>
+        <div class="stats">
+          <div class="stat"><strong>CS</strong><div>Information Eng.</div></div>
+          <div class="stat"><strong>AI</strong><div>Data / ML</div></div>
+          <div class="stat"><strong>Dev</strong><div>Java · Python</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p>정보공학 전공으로 알고리즘, 데이터 분석, 시스템 설계 역량을 기르고 있습니다. 전공 수업 외에도 실제 문제를 정의하고 해결하는 프로젝트 중심 학습을 지향합니다.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">SQL</span>
+        </div>
+        <div class="card">
+          <h3>Data / AI</h3>
+          <span class="chip">Pandas</span>
+          <span class="chip">NumPy</span>
+          <span class="chip">ML Basics</span>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <span class="chip">Git</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Linux</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card project">
+          <h3>에너지 데이터 분석</h3>
+          <p class="lead">국가별 전력 소비 구조 분석</p>
+          <div class="overlay"><p>가설 설정 → 데이터 전처리 → 시각화 → 인사이트 도출</p></div>
+        </div>
+        <div class="card project">
+          <h3>Android App</h3>
+          <p class="lead">Java 기반 모바일 앱 구현</p>
+          <div class="overlay"><p>UI 이벤트 처리 및 로직 구현</p></div>
+        </div>
+        <div class="card project">
+          <h3>Automation</h3>
+          <p class="lead">업무 자동화 스크립트</p>
+          <div class="overlay"><p>Python을 활용한 반복 업무 효율화</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card timeline">
+        <div class="item">
+          <time>2023 - Present</time>
+          <div>
+            <strong>한양대학교</strong>
+            <div>정보공학 전공</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: oh6428@gmail.com</p>
+        <p>GitHub: github.com/ohyoseok92</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Hyoseok Portfolio
+    </footer>
+  </main>
+
+  <script>
+    function scrollToId(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
